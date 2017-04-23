@@ -22,7 +22,7 @@ namespace Scigeobib
 			xmlWriter.WriteStartElement("Folder");
 		}
 
-		public void WriteCity(GeoCity city, double width)
+		public void WriteCity(GeoCodedLocation city, double width)
 		{
 			xmlWriter.WriteStartElement("Placemark");
 
@@ -57,7 +57,7 @@ namespace Scigeobib
 			xmlWriter.WriteEndElement();
 		}
 
-		public void WriteLine(GeoCity from, GeoCity to, double width)
+		public void WriteLine(GeoCodedLocation from, GeoCodedLocation to, double width)
 		{
 			xmlWriter.WriteStartElement("Placemark");
 

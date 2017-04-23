@@ -10,7 +10,7 @@ namespace Scigeobib
 		private static Logger logger = LogManager.GetCurrentClassLogger();
 
 		private PublicationsFile publicationsFile;
-		private CitiesResolver citiesResolver = new CitiesResolver();
+		private GeoCodingWithState geoCoding = new GeoCodingWithState();
 		private CityMatrix matrix;
 		private Statistics statistics;
 
@@ -40,15 +40,15 @@ namespace Scigeobib
 			}
 		}
 
-		public void SetInput_KnownCitiesCsv(string filePath)
+		public void SetInput_KnownLocationsCsv(string filePath)
 		{
 			try
 			{
-				citiesResolver.SetKnownCities(filePath);
+				geoCoding.SetKnownLocations(filePath);
 			}
 			catch (Exception e)
 			{
-				logger.Error(e, "Error while loading known cities.");
+				logger.Error(e, "Error while loading known locations.");
 				throw;
 			}
 		}
@@ -57,7 +57,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				citiesResolver.SetGeoCoder(key != null ? new GeoCoder(key) : null);
+				geoCoding.SetGeoCoder(key != null ? new GeoCoder(key) : null);
 			}
 			catch (Exception e)
 			{
@@ -70,7 +70,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				citiesResolver.SetRetry(retry);
+				geoCoding.SetRetry(retry);
 			}
 			catch (Exception e)
 			{
@@ -91,12 +91,10 @@ namespace Scigeobib
 				{
 					var publicationCities = extractor.GetCities(publication);
 
-					List<GeoCity> publicationCitiesResolved = publicationCities.Select(x => citiesResolver.Resolve_OrNull(x)).Where(x => x != null).Distinct().ToList();
+					List<GeoCodedLocation> publicationCitiesResolved = publicationCities.Select(x => geoCoding.GeoCode_OrNull(x)).Where(x => x != null).Distinct().ToList();
 
 					for (int i = 0; i < publicationCitiesResolved.Count; ++i)
 					{
-						//CollectionUtils.Increment(cityToPublicationsCount, publicationCitiesResolved[i]);
-
 						for (int j = i + 1; j < publicationCitiesResolved.Count; ++j)
 						{
 							matrix.AddConnection(publicationCitiesResolved[i], publicationCitiesResolved[j]);
@@ -104,27 +102,27 @@ namespace Scigeobib
 					}
 				}
 
-				citiesResolver.LogTotals();
-
 				statistics = new Statistics();
 				foreach (Publication publication in publicationsFile.publications)
 				{
 					string country = extractor.GetCountry(publication);
 					if (country != null)
 					{
-						GeoCity geoCity =  citiesResolver.Resolve_OrNull(country);
-						if (geoCity != null)
+						GeoCodedLocation geoCodedCountry =  geoCoding.GeoCode_OrNull(country);
+						if (geoCodedCountry != null)
 						{
-							statistics.AddPublicationInCountry(geoCity);
+							statistics.AddPublicationInCountry(geoCodedCountry);
 
 							string journal = extractor.GetJournal(publication);
 							if (journal != null)
 							{
-								statistics.AddJournalInCountry(geoCity, journal);
+								statistics.AddJournalInCountry(geoCodedCountry, journal);
 							}
 						}
 					}
 				}
+
+				geoCoding.LogTotals();
 
 				logger.Info("Done");
 			}
@@ -212,41 +210,41 @@ namespace Scigeobib
 			}
 		}
 
-		public void GetOutput_KnownCitiesCsv(string filePath)
+		public void GetOutput_KnownLocationsCsv(string filePath)
 		{
 			try
 			{
-				citiesResolver.HandleKnown(filePath);
+				geoCoding.HandleKnown(filePath);
 			}
 			catch (Exception e)
 			{
-				logger.Error(e, "Error while saving known cities.");
+				logger.Error(e, "Error while saving known locations.");
 				throw;
 			}
 		}
 
-		public void GetOutput_UnresolvedCities(string filePath)
+		public void GetOutput_FailedLocations(string filePath)
 		{
 			try
 			{
-				citiesResolver.HandleUnresolved(filePath);
+				geoCoding.HandleFailed(filePath);
 			}
 			catch (Exception e)
 			{
-				logger.Error(e, "Error while saving unresolved cities.");
+				logger.Error(e, "Error while saving unresolved locations.");
 				throw;
 			}
 		}
 
-		public void GetOutput_UnknownCities(string filePath)
+		public void GetOutput_UnknownLocations(string filePath)
 		{
 			try
 			{
-				citiesResolver.HandleUnknown(filePath);
+				geoCoding.HandleUnknown(filePath);
 			}
 			catch (Exception e)
 			{
-				logger.Error(e, "Error while saving unknown cities.");
+				logger.Error(e, "Error while saving unknown locations.");
 				throw;
 			}
 		}

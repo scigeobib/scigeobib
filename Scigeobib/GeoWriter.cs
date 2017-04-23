@@ -7,7 +7,7 @@ namespace Scigeobib
 {
 	public class GeoWriter
 	{
-		public static void WriteGeo(Dictionary<string, GeoCity> cities, string path)
+		public static void WriteGeo(Dictionary<string, GeoCodedLocation> cities, string path)
 		{
 			using (TextWriter tw = new StreamWriter(path, false, Encoding.UTF8))
 			{

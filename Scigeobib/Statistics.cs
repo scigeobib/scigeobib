@@ -8,20 +8,20 @@ namespace Scigeobib
 {
 	public class Statistics
 	{
-		public Dictionary<GeoCity, int> countryToPublicationsCount = new Dictionary<GeoCity, int>();
-		public Dictionary<GeoCity, HashSet<string>> countryToJournals = new Dictionary<GeoCity, HashSet<string>>();
+		public Dictionary<GeoCodedLocation, int> countryToPublicationsCount = new Dictionary<GeoCodedLocation, int>();
+		public Dictionary<GeoCodedLocation, HashSet<string>> countryToJournals = new Dictionary<GeoCodedLocation, HashSet<string>>();
 
-		public void AddPublicationInCountry(GeoCity country)
+		public void AddPublicationInCountry(GeoCodedLocation country)
 		{
 			CollectionUtils.Increment(countryToPublicationsCount, country);
 		}
 
-		public void AddJournalInCountry(GeoCity country, string journal)
+		public void AddJournalInCountry(GeoCodedLocation country, string journal)
 		{
 			CollectionUtils.AddToSet(countryToJournals, country, journal);
 		}
 
-		public void WriteKml(IDictionary<GeoCity, int> dict, string filePath)
+		public void WriteKml(IDictionary<GeoCodedLocation, int> dict, string filePath)
 		{
 			int maxValue = dict.Max(kv => kv.Value);
 			using (KmlWriter kmlWriter = new KmlWriter(filePath))
@@ -33,7 +33,7 @@ namespace Scigeobib
 			}
 		}
 
-		public void WriteCsv(IDictionary<GeoCity, int> dict, string filePath)
+		public void WriteCsv(IDictionary<GeoCodedLocation, int> dict, string filePath)
 		{
 			using (TextWriter tw = new StreamWriter(filePath, false, Encoding.UTF8))
 			{

@@ -84,9 +84,9 @@ public partial class MainWindow : Gtk.Window
 		SelectInputFile(inputPublications, "*.txt;*.csv");
 	}
 
-	protected void OnInputKnownCitiesSelect(object sender, EventArgs e)
+	protected void OnInputKnownLocationsSelect(object sender, EventArgs e)
 	{
-		SelectInputFile(inputKnownCities, "*.txt;*.csv");
+		SelectInputFile(inputKnownLocations, "*.txt;*.csv");
 	}
 
 	protected void OnButtonStart(object sender, EventArgs e)
@@ -118,8 +118,8 @@ public partial class MainWindow : Gtk.Window
 			else
 				main.SetInput_Publications_WOS(inputFilePath);
 
-			if (inputKnownCities.Text != "")
-				main.SetInput_KnownCitiesCsv(inputKnownCities.Text);
+			if (inputKnownLocations.Text != "")
+				main.SetInput_KnownLocationsCsv(inputKnownLocations.Text);
 			main.SetInput_GeoCoderKey(inputGeoCoderKey.Text != "" ? inputGeoCoderKey.Text : null);
 			main.SetInput_RetryGeoCoding(inputRetryGeoCoding.State == StateType.Active);
 			main.DoWork();
@@ -174,19 +174,19 @@ public partial class MainWindow : Gtk.Window
 		SelectOutputFile(main.GetOutput_JournalsCsv, "*.csv");
 	}
 
-	protected void OnOutputKnownCities(object sender, EventArgs e)
+	protected void OnOutputKnownLocations(object sender, EventArgs e)
 	{
-		SelectOutputFile(main.GetOutput_KnownCitiesCsv, "*.csv");
+		SelectOutputFile(main.GetOutput_KnownLocationsCsv, "*.csv");
 	}
 
-	protected void OnOutputUnresolvedCities(object sender, EventArgs e)
+	protected void OnOutputFailedLocations(object sender, EventArgs e)
 	{
-		SelectOutputFile(main.GetOutput_UnresolvedCities, "*.txt");
+		SelectOutputFile(main.GetOutput_FailedLocations, "*.txt");
 	}
 
-	protected void OnOutputUnknownCities(object sender, EventArgs e)
+	protected void OnOutputUnknownLocations(object sender, EventArgs e)
 	{
-		SelectOutputFile(main.GetOutput_UnknownCities, "*.txt");
+		SelectOutputFile(main.GetOutput_UnknownLocations, "*.txt");
 	}
 
 	private void SelectInputFile(Entry entry, string filter)

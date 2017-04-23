@@ -5,20 +5,20 @@ namespace Scigeobib
 {
 	public class CityMatrix
 	{
-		private SortedDictionary<GeoCity, int> cityToConnectionsCount = new SortedDictionary<GeoCity, int>();
+		private SortedDictionary<GeoCodedLocation, int> cityToConnectionsCount = new SortedDictionary<GeoCodedLocation, int>();
 
-		private SortedDictionary<Tuple<GeoCity, GeoCity>, int> usedConnections = new SortedDictionary<Tuple<GeoCity, GeoCity>, int>();
+		private SortedDictionary<Tuple<GeoCodedLocation, GeoCodedLocation>, int> usedConnections = new SortedDictionary<Tuple<GeoCodedLocation, GeoCodedLocation>, int>();
 
 		private int maxCityValue = 1;
 		private int maxConnectionValue = 1;
 
-		public void AddConnection(GeoCity city1, GeoCity city2)
+		public void AddConnection(GeoCodedLocation city1, GeoCodedLocation city2)
 		{
 			AddCity(city1);
 			AddCity(city2);
 
-			GeoCity cityA;
-			GeoCity cityB;
+			GeoCodedLocation cityA;
+			GeoCodedLocation cityB;
 			if (city1.CompareTo(city2) < 0)
 			{
 				cityA = city1;
@@ -30,7 +30,7 @@ namespace Scigeobib
 				cityB = city1;
 			}
 
-			var key = new Tuple<GeoCity, GeoCity>(cityA, cityB);
+			var key = new Tuple<GeoCodedLocation, GeoCodedLocation>(cityA, cityB);
 
 			int newValue = CollectionUtils.Increment(usedConnections, key);
 			if (newValue > maxConnectionValue)
@@ -39,7 +39,7 @@ namespace Scigeobib
 			}
 		}
 
-		private void AddCity(GeoCity city)
+		private void AddCity(GeoCodedLocation city)
 		{
 			int newValue = CollectionUtils.Increment(cityToConnectionsCount, city);
 			if (newValue > maxCityValue)
@@ -48,12 +48,12 @@ namespace Scigeobib
 			}
 		}
 
-		public IDictionary<GeoCity, int> GetCities()
+		public IDictionary<GeoCodedLocation, int> GetCities()
 		{
 			return cityToConnectionsCount;
 		}
 
-		public IDictionary<Tuple<GeoCity, GeoCity>, int> GetConnections()
+		public IDictionary<Tuple<GeoCodedLocation, GeoCodedLocation>, int> GetConnections()
 		{
 			return usedConnections;
 		}

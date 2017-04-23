@@ -19,7 +19,7 @@ namespace ScigeobibCmd
 			ScigeobibMain main = new ScigeobibMain();
 			main.SetInput_Publications_ScopusCsv("input_scopus.csv");
 			main.SetInput_Publications_WOS("input_wos.txt");
-			main.SetInput_KnownCitiesCsv("input_known_cities.csv");
+			main.SetInput_KnownLocationsCsv("input_known_cities.csv");
 			main.SetInput_GeoCoderKey(null);
 			main.SetInput_RetryGeoCoding(false);
 			main.DoWork();
@@ -28,9 +28,9 @@ namespace ScigeobibCmd
 			main.GetOutput_PublicationsCsv("output_publications.csv");
 			main.GetOutput_JournalsKml("output_journals.kml");
 			main.GetOutput_JournalsCsv("output_journals.csv");
-			main.GetOutput_KnownCitiesCsv("output_known_cities.csv");
-			main.GetOutput_UnresolvedCities("output_unresolved_cities.txt");
-			main.GetOutput_UnknownCities("output_unknown_cities.txt");
+			main.GetOutput_KnownLocationsCsv("output_known_cities.csv");
+			main.GetOutput_FailedLocations("output_unresolved_cities.txt");
+			main.GetOutput_UnknownLocations("output_unknown_cities.txt");
 
 		}
 	}

@@ -27,9 +27,9 @@ public partial class MainWindow
 
 	private global::Gtk.Label label2;
 
-	private global::Gtk.Entry inputKnownCities;
+	private global::Gtk.Entry inputKnownLocations;
 
-	private global::Gtk.Button inputKnownCitiesSelect;
+	private global::Gtk.Button inputKnownLocationsSelect;
 
 	private global::Gtk.HBox hbox3;
 
@@ -217,29 +217,29 @@ public partial class MainWindow
 		// Container child hbox2.Gtk.Box+BoxChild
 		this.label2 = new global::Gtk.Label();
 		this.label2.Name = "label2";
-		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Known cities CSV (from previous run Output B):");
+		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Geo coded locations CSV (from previous run Output B):");
 		this.hbox2.Add(this.label2);
 		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.label2]));
 		w7.Position = 1;
 		w7.Expand = false;
 		w7.Fill = false;
 		// Container child hbox2.Gtk.Box+BoxChild
-		this.inputKnownCities = new global::Gtk.Entry();
-		this.inputKnownCities.CanFocus = true;
-		this.inputKnownCities.Name = "inputKnownCities";
-		this.inputKnownCities.IsEditable = true;
-		this.inputKnownCities.InvisibleChar = '●';
-		this.hbox2.Add(this.inputKnownCities);
-		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.inputKnownCities]));
+		this.inputKnownLocations = new global::Gtk.Entry();
+		this.inputKnownLocations.CanFocus = true;
+		this.inputKnownLocations.Name = "inputKnownLocations";
+		this.inputKnownLocations.IsEditable = true;
+		this.inputKnownLocations.InvisibleChar = '●';
+		this.hbox2.Add(this.inputKnownLocations);
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.inputKnownLocations]));
 		w8.Position = 2;
 		// Container child hbox2.Gtk.Box+BoxChild
-		this.inputKnownCitiesSelect = new global::Gtk.Button();
-		this.inputKnownCitiesSelect.CanFocus = true;
-		this.inputKnownCitiesSelect.Name = "inputKnownCitiesSelect";
-		this.inputKnownCitiesSelect.UseUnderline = true;
-		this.inputKnownCitiesSelect.Label = global::Mono.Unix.Catalog.GetString("Select");
-		this.hbox2.Add(this.inputKnownCitiesSelect);
-		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.inputKnownCitiesSelect]));
+		this.inputKnownLocationsSelect = new global::Gtk.Button();
+		this.inputKnownLocationsSelect.CanFocus = true;
+		this.inputKnownLocationsSelect.Name = "inputKnownLocationsSelect";
+		this.inputKnownLocationsSelect.UseUnderline = true;
+		this.inputKnownLocationsSelect.Label = global::Mono.Unix.Catalog.GetString("Select");
+		this.hbox2.Add(this.inputKnownLocationsSelect);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox2[this.inputKnownLocationsSelect]));
 		w9.Position = 3;
 		w9.Expand = false;
 		w9.Fill = false;
@@ -265,7 +265,7 @@ public partial class MainWindow
 		// Container child hbox3.Gtk.Box+BoxChild
 		this.label6 = new global::Gtk.Label();
 		this.label6.Name = "label6";
-		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Bing maps API key (tag missing cities using this):");
+		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Bing maps API key (geo code unknown locations using this):");
 		this.hbox3.Add(this.label6);
 		global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.label6]));
 		w12.Position = 1;
@@ -284,7 +284,7 @@ public partial class MainWindow
 		this.inputRetryGeoCoding = new global::Gtk.CheckButton();
 		this.inputRetryGeoCoding.CanFocus = true;
 		this.inputRetryGeoCoding.Name = "inputRetryGeoCoding";
-		this.inputRetryGeoCoding.Label = global::Mono.Unix.Catalog.GetString("Retry geo coding of unresolved");
+		this.inputRetryGeoCoding.Label = global::Mono.Unix.Catalog.GetString("Retry geo coding of previously failed");
 		this.inputRetryGeoCoding.DrawIndicator = true;
 		this.inputRetryGeoCoding.UseUnderline = true;
 		this.hbox3.Add(this.inputRetryGeoCoding);
@@ -557,7 +557,7 @@ public partial class MainWindow
 		// Container child hbox5.Gtk.Box+BoxChild
 		this.label10 = new global::Gtk.Label();
 		this.label10.Name = "label10";
-		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Known cities CSV (Input B + newly geo coded using Input C)");
+		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Geo coded locations CSV (Input B + newly geo coded using Input C)");
 		this.hbox5.Add(this.label10);
 		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label10]));
 		w44.Position = 1;
@@ -613,7 +613,7 @@ public partial class MainWindow
 		// Container child hbox8.Gtk.Box+BoxChild
 		this.label13 = new global::Gtk.Label();
 		this.label13.Name = "label13";
-		this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Unresolved cities");
+		this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("List of geo coded locations which failed to geo code successfully");
 		this.hbox8.Add(this.label13);
 		global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.label13]));
 		w49.Position = 0;
@@ -642,7 +642,7 @@ public partial class MainWindow
 		// Container child hbox9.Gtk.Box+BoxChild
 		this.label12 = new global::Gtk.Label();
 		this.label12.Name = "label12";
-		this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("Unknown cities");
+		this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("List of locations not geo coded yet");
 		this.hbox9.Add(this.label12);
 		global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.label12]));
 		w52.Position = 0;
@@ -691,12 +691,12 @@ public partial class MainWindow
 		{
 			this.Child.ShowAll();
 		}
-		this.DefaultWidth = 717;
+		this.DefaultWidth = 768;
 		this.DefaultHeight = 468;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.inputPublicationsSelect.Clicked += new global::System.EventHandler(this.OnInputPublicationsSelect);
-		this.inputKnownCitiesSelect.Clicked += new global::System.EventHandler(this.OnInputKnownCitiesSelect);
+		this.inputKnownLocationsSelect.Clicked += new global::System.EventHandler(this.OnInputKnownLocationsSelect);
 		this.buttonStart.Clicked += new global::System.EventHandler(this.OnButtonStart);
 		this.buttonStop.Clicked += new global::System.EventHandler(this.OnButtonStop);
 		this.button4.Clicked += new global::System.EventHandler(this.OnOutputCollaborationKml);
@@ -704,8 +704,8 @@ public partial class MainWindow
 		this.button9.Clicked += new global::System.EventHandler(this.OnOutputPublicationsCsv);
 		this.button10.Clicked += new global::System.EventHandler(this.OnOutputJournalsKml);
 		this.button11.Clicked += new global::System.EventHandler(this.OnOutputJournalsCsv);
-		this.button5.Clicked += new global::System.EventHandler(this.OnOutputKnownCities);
-		this.button7.Clicked += new global::System.EventHandler(this.OnOutputUnresolvedCities);
-		this.button6.Clicked += new global::System.EventHandler(this.OnOutputUnknownCities);
+		this.button5.Clicked += new global::System.EventHandler(this.OnOutputKnownLocations);
+		this.button7.Clicked += new global::System.EventHandler(this.OnOutputFailedLocations);
+		this.button6.Clicked += new global::System.EventHandler(this.OnOutputUnknownLocations);
 	}
 }

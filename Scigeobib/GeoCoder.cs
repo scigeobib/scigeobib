@@ -14,7 +14,7 @@ namespace Scigeobib
 			this.apiKey = apiKey;
 		}
 
-		public GeoCity GetGeocoded(string query)
+		public GeoCodedLocation GetGeocoded(string query)
 		{
 			var request = new GeocodeRequest()
 			{
@@ -39,7 +39,7 @@ namespace Scigeobib
 			{
 				var result = response.ResourceSets[0].Resources[0] as BingMapsRESTToolkit.Location;
 
-				GeoCity geoCity = new GeoCity();
+				GeoCodedLocation geoCity = new GeoCodedLocation();
 				geoCity.lat = result.Point.Coordinates[0];
 				geoCity.lon = result.Point.Coordinates[1];
 				geoCity.normalizedName = result.Address.FormattedAddress;

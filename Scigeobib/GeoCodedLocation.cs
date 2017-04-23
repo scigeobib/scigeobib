@@ -2,7 +2,7 @@ using System;
 
 namespace Scigeobib
 {
-	public class GeoCity : IComparable<GeoCity>, IComparable
+	public class GeoCodedLocation : IComparable<GeoCodedLocation>, IComparable
 	{
 		public double lat;
 		public double lon;
@@ -10,17 +10,17 @@ namespace Scigeobib
 
 		public int CompareTo(object obj)
 		{
-			return normalizedName.CompareTo(((GeoCity)obj).normalizedName);
+			return normalizedName.CompareTo(((GeoCodedLocation)obj).normalizedName);
 		}
 
-		public int CompareTo(GeoCity other)
+		public int CompareTo(GeoCodedLocation other)
 		{
 			return normalizedName.CompareTo(other.normalizedName);
 		}
 
 		public override bool Equals(object obj)
 		{
-			return normalizedName.Equals(((GeoCity)obj).normalizedName);
+			return normalizedName.Equals(((GeoCodedLocation)obj).normalizedName);
 		}
 
 		public override int GetHashCode()

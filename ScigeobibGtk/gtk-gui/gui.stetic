@@ -7,7 +7,7 @@
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/ScigeobibGtk.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="717 468">
+  <widget class="Gtk.Window" id="MainWindow" design-size="768 468">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Scigeobib</property>
     <property name="WindowPosition">Center</property>
@@ -115,7 +115,7 @@
                         <child>
                           <widget class="Gtk.Label" id="label2">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">Known cities CSV (from previous run Output B):</property>
+                            <property name="LabelProp" translatable="yes">Geo coded locations CSV (from previous run Output B):</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -125,7 +125,7 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Entry" id="inputKnownCities">
+                          <widget class="Gtk.Entry" id="inputKnownLocations">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="IsEditable">True</property>
@@ -137,13 +137,13 @@
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.Button" id="inputKnownCitiesSelect">
+                          <widget class="Gtk.Button" id="inputKnownLocationsSelect">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">Select</property>
                             <property name="UseUnderline">True</property>
-                            <signal name="Clicked" handler="OnInputKnownCitiesSelect" />
+                            <signal name="Clicked" handler="OnInputKnownLocationsSelect" />
                           </widget>
                           <packing>
                             <property name="Position">3</property>
@@ -180,7 +180,7 @@
                         <child>
                           <widget class="Gtk.Label" id="label6">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">Bing maps API key (tag missing cities using this):</property>
+                            <property name="LabelProp" translatable="yes">Bing maps API key (geo code unknown locations using this):</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -205,7 +205,7 @@
                           <widget class="Gtk.CheckButton" id="inputRetryGeoCoding">
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
-                            <property name="Label" translatable="yes">Retry geo coding of unresolved</property>
+                            <property name="Label" translatable="yes">Retry geo coding of previously failed</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
@@ -589,7 +589,7 @@
                         <child>
                           <widget class="Gtk.Label" id="label10">
                             <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">Known cities CSV (Input B + newly geo coded using Input C)</property>
+                            <property name="LabelProp" translatable="yes">Geo coded locations CSV (Input B + newly geo coded using Input C)</property>
                           </widget>
                           <packing>
                             <property name="Position">1</property>
@@ -605,7 +605,7 @@
                             <property name="Type">TextOnly</property>
                             <property name="Label" translatable="yes">To file</property>
                             <property name="UseUnderline">True</property>
-                            <signal name="Clicked" handler="OnOutputKnownCities" />
+                            <signal name="Clicked" handler="OnOutputKnownLocations" />
                           </widget>
                           <packing>
                             <property name="Position">2</property>
@@ -662,7 +662,7 @@
                                 <child>
                                   <widget class="Gtk.Label" id="label13">
                                     <property name="MemberName" />
-                                    <property name="LabelProp" translatable="yes">Unresolved cities</property>
+                                    <property name="LabelProp" translatable="yes">List of geo coded locations which failed to geo code successfully</property>
                                   </widget>
                                   <packing>
                                     <property name="Position">0</property>
@@ -678,7 +678,7 @@
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes">To file</property>
                                     <property name="UseUnderline">True</property>
-                                    <signal name="Clicked" handler="OnOutputUnresolvedCities" />
+                                    <signal name="Clicked" handler="OnOutputFailedLocations" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
@@ -702,7 +702,7 @@
                                 <child>
                                   <widget class="Gtk.Label" id="label12">
                                     <property name="MemberName" />
-                                    <property name="LabelProp" translatable="yes">Unknown cities</property>
+                                    <property name="LabelProp" translatable="yes">List of locations not geo coded yet</property>
                                   </widget>
                                   <packing>
                                     <property name="Position">0</property>
@@ -718,7 +718,7 @@
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes">To file</property>
                                     <property name="UseUnderline">True</property>
-                                    <signal name="Clicked" handler="OnOutputUnknownCities" />
+                                    <signal name="Clicked" handler="OnOutputUnknownLocations" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
