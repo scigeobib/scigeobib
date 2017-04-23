@@ -46,18 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CitiesExtractor.cs" />
+    <Compile Include="FieldsExtractor.cs" />
     <Compile Include="CitiesResolver.cs" />
     <Compile Include="CityMatrix.cs" />
     <Compile Include="CollectionUtils.cs" />
     <Compile Include="GeoCity.cs" />
     <Compile Include="GeoReader.cs" />
     <Compile Include="KmlWriter.cs" />
-    <Compile Include="PublicationWithErrors.cs" />
-    <Compile Include="PublicationWithReferences.cs" />
-    <Compile Include="ReferencesResolver.cs" />
     <Compile Include="ScopusFileFormatParser.cs" />
-    <Compile Include="SortedListWriter.cs" />
     <Compile Include="PublicationsFile.cs" />
     <Compile Include="PublicationEntry.cs" />
     <Compile Include="WosFileFormatParser.cs" />
@@ -66,9 +62,7 @@
     <Compile Include="ScigeobibMain.cs" />
     <Compile Include="GeoCoder.cs" />
     <Compile Include="GeoWriter.cs" />
-    <Compile Include="CountryExtractor.cs" />
     <Compile Include="Statistics.cs" />
-    <Compile Include="JournalExtractor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using NLog;
@@ -86,11 +85,11 @@ namespace Scigeobib
 			{
 				matrix = new CityMatrix();
 
-				//SortedDictionary<GeoCity, int> cityToPublicationsCount = new SortedDictionary<GeoCity, int>();
+				FieldsExtractor extractor = new FieldsExtractor(publicationsFile.Type);
 
 				foreach (Publication publication in publicationsFile.publications)
 				{
-					var publicationCities = CitiesExtractor.GetCities(publication, publicationsFile.Type);
+					var publicationCities = extractor.GetCities(publication);
 
 					List<GeoCity> publicationCitiesResolved = publicationCities.Select(x => citiesResolver.Resolve_OrNull(x)).Where(x => x != null).Distinct().ToList();
 
@@ -105,56 +104,12 @@ namespace Scigeobib
 					}
 				}
 
-				/*
-				{
-					SortedListWriter w = new SortedListWriter();
-
-					w.Add(cityToPublicationsCount, x => x.normalizedName);
-
-					//w.WriteToFile("output_city_to_publications_count");
-				}
-				*/
-
-				/*
-				ReferencesResolver referencesResolver = new ReferencesResolver();
-
-				List<PublicationWithReferences> withReferences = referencesResolver.ResolveAll(f);
-				File.WriteAllText("output_publications_references.txt", JsonConvert.SerializeObject(withReferences, Formatting.Indented));
-				referencesResolver.HandleUnresolved();
-
-				foreach (PublicationWithReferences publicationWithReferences in withReferences)
-				{
-					WosFileFormatPublication publication1 = publicationWithReferences.publication;
-
-					List<GeoCity> publication1_cities = resolvedCities.ResolveCitiesForPublication(publication1);
-
-					foreach (WosFileFormatPublication publication2 in publicationWithReferences.resolved)
-					{
-						List<GeoCity> publication2_cities = resolvedCities.ResolveCitiesForPublication(publication2);
-
-						foreach (GeoCity city1 in publication1_cities)
-						{
-							usedCities.Add(city1);
-
-							foreach (GeoCity city2 in publication2_cities)
-							{
-								usedCities.Add(city2);
-
-								usedConnections.Add(new Tuple<GeoCity, GeoCity>(city1, city2));
-							}
-						}
-					}
-				}
-				*/
-
-				//matrix.WriteCityToConnectionsCount();
-
 				citiesResolver.LogTotals();
 
 				statistics = new Statistics();
 				foreach (Publication publication in publicationsFile.publications)
 				{
-					string country = CountryExtractor.GetCountry(publication, publicationsFile.Type);
+					string country = extractor.GetCountry(publication);
 					if (country != null)
 					{
 						GeoCity geoCity =  citiesResolver.Resolve_OrNull(country);
@@ -162,7 +117,7 @@ namespace Scigeobib
 						{
 							statistics.AddPublicationInCountry(geoCity);
 
-							string journal = JournalExtractor.GetJournal(publication, publicationsFile.Type);
+							string journal = extractor.GetJournal(publication);
 							if (journal != null)
 							{
 								statistics.AddJournalInCountry(geoCity, journal);
