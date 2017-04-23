@@ -121,7 +121,7 @@ public partial class MainWindow : Gtk.Window
 			if (inputKnownLocations.Text != "")
 				main.SetInput_KnownLocationsCsv(inputKnownLocations.Text);
 			main.SetInput_GeoCoderKey(inputGeoCoderKey.Text != "" ? inputGeoCoderKey.Text : null);
-			main.SetInput_RetryGeoCoding(inputRetryGeoCoding.State == StateType.Active);
+			main.SetInput_RetryGeoCoding(inputRetryGeoCoding.Active);
 			main.DoWork();
 
 			complete = true;

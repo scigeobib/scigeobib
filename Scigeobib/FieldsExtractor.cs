@@ -123,14 +123,9 @@ namespace Scigeobib
 			{
 				PublicationEntry entry = publication.entries[field];
 
-				if (entry.values.Count != 1)
-				{
-					logger.Warn("Invalid count of values for journal extraction");
-				}
-
 				if (entry.values.Count > 0)
 				{
-					string journal = entry.values[0];
+					string journal = string.Join(" ", entry.values);
 					if (!string.IsNullOrEmpty(journal))
 						result = journal;
 				}
