@@ -16,21 +16,38 @@ namespace Scigeobib
 			this.fileType = fileType;
 		}
 
+		public string GetTitle(Publication publication)
+		{
+			string field = null;
+			if (fileType == FileType.WOS) field = "TI";
+			else if (fileType == FileType.SCOPUS) field = "Title";
+			else throw new Exception("Unhandled file type: " + fileType);
+
+			string result = null;
+			if (publication.entries.ContainsKey(field))
+			{
+				PublicationEntry entry = publication.entries[field];
+				result = string.Join(" ", entry.values);
+			}
+
+			return result;
+		}
+
 		public List<string> GetCities(Publication publication)
 		{
-			string geoField = null;
-			if (fileType == FileType.WOS) geoField = "C1";
-			else if (fileType == FileType.SCOPUS) geoField = "Affiliations";
+			string field = null;
+			if (fileType == FileType.WOS) field = "C1";
+			else if (fileType == FileType.SCOPUS) field = "Affiliations";
 			else throw new Exception("Unhandled file type: " + fileType);
 
 			List<string> result = new List<string>();
 
-			if (publication.entries.ContainsKey(geoField))
+			if (publication.entries.ContainsKey(field))
 			{
-				PublicationEntry entry = publication.entries[geoField];
+				PublicationEntry entry = publication.entries[field];
 				if (entry.values.Count == 0)
 				{
-					logger.Warn("No values for cities extraction");
+					logger.Debug("No values for cities extraction");
 				}
 
 				foreach (string address in entry.values)
@@ -40,34 +57,34 @@ namespace Scigeobib
 					if (city != null)
 						result.Add(city);
 					else
-						logger.Warn("No cities extracted from address: {0}", address);
+						logger.Warn("No cities extracted from address: \"{0}\" (in publication \"{1}\")", address, GetTitle(publication));
 				}
 			}
 			else
 			{
-				logger.Warn("No field for cities extraction");
+				logger.Debug("No field for cities extraction");
 			}
 
 			if (result.Count > 0)
-				logger.Debug("Extracted cities from publication: {0}", string.Join(", ", result));
+				logger.Info("Extracted cities: \"{0}\" (publication: \"{1}\")", string.Join(", ", result), GetTitle(publication));
 			else
-				logger.Warn("No cities extracted from a publication");
+				logger.Warn("No cities extracted from publication: \"{0}\"", GetTitle(publication));
 
 			return result;
 		}
 
 		public string GetCountry(Publication publication)
 		{
-			string geoField = null;
-			if (fileType == FileType.WOS) geoField = "PA";
-			else if (fileType == FileType.SCOPUS) geoField = "Publisher";
+			string field = null;
+			if (fileType == FileType.WOS) field = "PA";
+			else if (fileType == FileType.SCOPUS) field = "Publisher";
 			else throw new Exception("Unhandled file type: " + fileType);
 
 			string result = null;
 
-			if (publication.entries.ContainsKey(geoField))
+			if (publication.entries.ContainsKey(field))
 			{
-				PublicationEntry entry = publication.entries[geoField];
+				PublicationEntry entry = publication.entries[field];
 
 				if (entry.values.Count > 0)
 				{
@@ -77,34 +94,34 @@ namespace Scigeobib
 				}
 				else
 				{
-					logger.Warn("No values for country extraction");
+					logger.Debug("No values for country extraction");
 				}
 			}
 			else
 			{
-				logger.Warn("No field for country extraction");
+				logger.Debug("No field for country extraction");
 			}
 
 			if (result != null)
-				logger.Debug("Extracted country from publication: {0}", result);
+				logger.Info("Extracted country: \"{0}\" (publication: \"{1}\")", result, GetTitle(publication));
 			else
-				logger.Warn("No country extracted from a publication");
+				logger.Warn("No country extracted from publication: \"{0}\"", GetTitle(publication));
 
 			return result;
 		}
 
 		public string GetJournal(Publication publication)
 		{
-			string journalField = null;
-			if (fileType == FileType.WOS) journalField = "SO";
-			else if (fileType == FileType.SCOPUS) journalField = "Source title";
+			string field = null;
+			if (fileType == FileType.WOS) field = "SO";
+			else if (fileType == FileType.SCOPUS) field = "Source title";
 			else throw new Exception("Unhandled file type: " + fileType);
 
 			string result = null;
 
-			if (publication.entries.ContainsKey(journalField))
+			if (publication.entries.ContainsKey(field))
 			{
-				PublicationEntry entry = publication.entries[journalField];
+				PublicationEntry entry = publication.entries[field];
 
 				if (entry.values.Count != 1)
 				{
@@ -128,9 +145,9 @@ namespace Scigeobib
 			}
 
 			if (result != null)
-				logger.Debug("Extracted journal from publication: {0}", result);
+				logger.Info("Extracted journal: \"{0}\" (publication: \"{1}\")", result, GetTitle(publication));
 			else
-				logger.Warn("No journal extracted from a publication");
+				logger.Warn("No journal extracted from publication: \"{0}\"", GetTitle(publication));
 
 			return result;
 		}

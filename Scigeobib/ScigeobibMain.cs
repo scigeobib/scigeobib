@@ -106,14 +106,15 @@ namespace Scigeobib
 				foreach (Publication publication in publicationsFile.publications)
 				{
 					string country = extractor.GetCountry(publication);
+					string journal = extractor.GetJournal(publication);
 					if (country != null)
 					{
 						GeoCodedLocation geoCodedCountry =  geoCoding.GeoCode_OrNull(country);
+
 						if (geoCodedCountry != null)
 						{
 							statistics.AddPublicationInCountry(geoCodedCountry);
 
-							string journal = extractor.GetJournal(publication);
 							if (journal != null)
 							{
 								statistics.AddJournalInCountry(geoCodedCountry, journal);
