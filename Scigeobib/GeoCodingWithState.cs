@@ -14,6 +14,8 @@ namespace Scigeobib
 
 		private SortedSet<string> unknownLocations = new SortedSet<string>(StringComparer.InvariantCultureIgnoreCase);
 
+		private SortedSet<string> failedNow = new SortedSet<string>(StringComparer.InvariantCultureIgnoreCase);
+
 		private GeoCoder geoCoder;
 		private bool retry;
 
@@ -48,14 +50,17 @@ namespace Scigeobib
 				}
 				else
 				{
-					if (geoCoder != null && retry)
+					if (geoCoder != null && retry && !failedNow.Contains(location))
 					{
 						found = geoCoder.GetGeocoded(location);
 						knownLocations[location] = found;
 						if (found != null)
 							logger.Info("Location alredy known, failed previously, but geo coded successfully now: \"{0}\" -> \"{1}\".", location, found.normalizedName);
 						else
+						{
+							failedNow.Add(location);
 							logger.Warn("Location already known, failed to geo code even now after retry: \"{0}\".", location);
+						}
 					}
 					else
 					{
@@ -72,7 +77,10 @@ namespace Scigeobib
 					if (found != null)
 						logger.Info("Location geo coded: \"{0}\" -> \"{1}\"", location, found.normalizedName);
 					else
+					{
+						failedNow.Add(location);
 						logger.Warn("Location failed to geo code: \"{0}\".", location);
+					}
 				}
 				else
 				{
