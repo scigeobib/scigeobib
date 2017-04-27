@@ -57,7 +57,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				geoCoding.SetGeoCoder(key != null ? new GeoCoder(key) : null);
+				geoCoding.SetGeoCoder(new GeoCoder(key));
 			}
 			catch (Exception e)
 			{

@@ -20,10 +20,11 @@ Used libraries
 
 - all dependencies are set up to be fetched using NuGet
 - **third-party libraries used:**
-  - [BingMapsRESTToolkit](BingMapsRESTToolkit)
+  - [BingMapsRESTToolkit](https://github.com/Microsoft/BingMapsRESTToolkit)
   - [CsvHelper](https://github.com/JoshClose/CsvHelper)
   - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
   - [NLog](https://github.com/NLog/NLog)
+  - [Command Line Parser Library](https://github.com/gsscoder/commandline)
 
 License
 -------
