@@ -28,7 +28,7 @@ namespace Scigeobib
 			{
 				foreach (var kv in dict)
 				{
-					kmlWriter.WriteCity(kv.Key, 1 + kv.Value * 2 / maxValue);
+					kmlWriter.WriteCity(kv.Key, 1 + (double)kv.Value * 2 / maxValue);
 				}
 			}
 		}

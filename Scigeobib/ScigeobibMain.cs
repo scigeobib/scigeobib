@@ -142,7 +142,7 @@ namespace Scigeobib
 				{
 					foreach (var city in matrix.GetCities())
 					{
-						kmlWriter.WriteCity(city.Key, 1 + city.Value * 2 / matrix.GetMaxCityValue());
+						kmlWriter.WriteCity(city.Key, 1 + (double)city.Value * 2 / matrix.GetMaxCityValue());
 					}
 
 					foreach (var connection in matrix.GetConnections())
