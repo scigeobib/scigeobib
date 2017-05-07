@@ -22,7 +22,7 @@ namespace Scigeobib
 			xmlWriter.WriteStartElement("Folder");
 		}
 
-		public void WriteCity(GeoCodedLocation city, double width)
+		public void WriteCity(GeoCodedLocation city, double width, int count)
 		{
 			xmlWriter.WriteStartElement("Placemark");
 
@@ -36,6 +36,10 @@ namespace Scigeobib
 
 			xmlWriter.WriteStartElement("name");
 			xmlWriter.WriteString(city.normalizedName);
+			xmlWriter.WriteEndElement();
+
+			xmlWriter.WriteStartElement("description");
+			xmlWriter.WriteString("Count: " + count);
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteStartElement("Style");
@@ -57,7 +61,7 @@ namespace Scigeobib
 			xmlWriter.WriteEndElement();
 		}
 
-		public void WriteLine(GeoCodedLocation from, GeoCodedLocation to, double width)
+		public void WriteLine(GeoCodedLocation from, GeoCodedLocation to, double width, int count)
 		{
 			xmlWriter.WriteStartElement("Placemark");
 
@@ -69,8 +73,12 @@ namespace Scigeobib
 			xmlWriter.WriteString("0");
 			xmlWriter.WriteEndElement();
 
-			xmlWriter.WriteStartElement("description");
+			xmlWriter.WriteStartElement("name");
 			xmlWriter.WriteCData(from.normalizedName + "---" + to.normalizedName);
+			xmlWriter.WriteEndElement();
+
+			xmlWriter.WriteStartElement("description");
+			xmlWriter.WriteCData("Count: " + count);
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteStartElement("Style");

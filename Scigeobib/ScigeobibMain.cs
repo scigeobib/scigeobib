@@ -142,13 +142,13 @@ namespace Scigeobib
 				{
 					foreach (var city in matrix.GetCities())
 					{
-						kmlWriter.WriteCity(city.Key, 1 + (double)city.Value * 2 / matrix.GetMaxCityValue());
+						kmlWriter.WriteCity(city.Key, 1 + (double)city.Value * 2 / matrix.GetMaxCityValue(), city.Value);
 					}
 
 					foreach (var connection in matrix.GetConnections())
 					{
 						double width = 1 + (double)connection.Value * 4 / matrix.GetMaxConnectionValue();
-						kmlWriter.WriteLine(connection.Key.Item1, connection.Key.Item2, width);
+						kmlWriter.WriteLine(connection.Key.Item1, connection.Key.Item2, width, connection.Value);
 					}
 				}
 			}
