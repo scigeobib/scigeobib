@@ -89,12 +89,20 @@ namespace Scigeobib
 
 			xmlWriter.WriteStartElement("LineString");
 
+			xmlWriter.WriteStartElement("extrude");
+			xmlWriter.WriteString("1");
+			xmlWriter.WriteEndElement();
+
 			xmlWriter.WriteStartElement("tessellate");
 			xmlWriter.WriteString("1");
 			xmlWriter.WriteEndElement();
 
+			xmlWriter.WriteStartElement("altitudeMode");
+			xmlWriter.WriteString("clampToGround");
+			xmlWriter.WriteEndElement();
+
 			xmlWriter.WriteStartElement("coordinates");
-			xmlWriter.WriteString(from.lon + " , " + from.lat + " , 0" + "\n" + to.lon + " , " + to.lat + " , 0");
+			xmlWriter.WriteString(from.lon + "," + from.lat + ",0" + "\n" + to.lon + "," + to.lat + ",0");
 			xmlWriter.WriteEndElement();
 
 			xmlWriter.WriteEndElement();
