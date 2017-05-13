@@ -20,13 +20,24 @@ namespace Scigeobib
 			{
 				var csv = new CsvParser(textReader);
 
+				int rowIndex = 0;
 				var titleRow = csv.Read();
 
 				while (true)
 				{
+					++rowIndex;
 					var row = csv.Read();
 					if (row == null)
 						break;
+
+					if (row.Length > titleRow.Length)
+					{
+						if (row.Length > 0)
+							logger.Warn("Invalid CSV row ({0}), ignoring: {1}", rowIndex + 1, row[0]);
+						else
+							logger.Warn("Invalid CSV row ({0}), ignoring", rowIndex + 1);
+						continue;
+					}
 
 					Publication publication = new Publication();
 					for (int i = 0; i < row.Length; ++i)
