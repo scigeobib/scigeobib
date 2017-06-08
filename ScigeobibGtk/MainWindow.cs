@@ -301,8 +301,4 @@ public partial class MainWindow : Gtk.Window
 			fc.Destroy();
 		}
 	}
-
-	protected void OnOutputPJournalsKml(object sender, EventArgs e)
-	{
-	}
 }

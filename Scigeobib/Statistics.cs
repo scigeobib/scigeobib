@@ -23,7 +23,7 @@ namespace Scigeobib
 
 		public void WriteKml(IDictionary<GeoCodedLocation, int> dict, string filePath)
 		{
-			int maxValue = dict.Max(kv => kv.Value);
+			int maxValue = dict.Count > 0 ? dict.Max(kv => kv.Value) : 1;
 			using (KmlWriter kmlWriter = new KmlWriter(filePath))
 			{
 				foreach (var kv in dict)
