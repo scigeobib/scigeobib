@@ -48,6 +48,17 @@ public partial class MainWindow : Gtk.Window
 		messages.Buffer.TagTable.Add(tag_info = new TextTag("info") { Foreground = "#0000ff" });
 	}
 
+	public void HideAdvanced()
+	{
+		label3.Hide();
+		hbox2.Hide();
+		label5.Hide();
+		inputRetryGeoCoding.Hide();
+		label16.Hide();
+		hbox5.Hide();
+		hbox6.Hide();
+	}
+
 	private void ScrollMessages(object sender, Gtk.SizeAllocatedArgs e)
 	{
 		messages.ScrollToIter(messages.Buffer.EndIter, 0, false, 0, 0);
