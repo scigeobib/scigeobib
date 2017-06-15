@@ -75,6 +75,18 @@ public partial class MainWindow
 
 	private global::Gtk.VBox vbox6;
 
+	private global::Gtk.HBox hbox13;
+
+	private global::Gtk.Label label9;
+
+	private global::Gtk.Button button12;
+
+	private global::Gtk.HBox hbox14;
+
+	private global::Gtk.Label label11;
+
+	private global::Gtk.Button button13;
+
 	private global::Gtk.HBox hbox10;
 
 	private global::Gtk.Label label8;
@@ -154,7 +166,6 @@ public partial class MainWindow
 		this.vbox2.Spacing = 6;
 		// Container child vbox2.Gtk.Box+BoxChild
 		this.hbox1 = new global::Gtk.HBox();
-		this.hbox1.Name = "hbox1";
 		this.hbox1.Spacing = 6;
 		// Container child hbox1.Gtk.Box+BoxChild
 		this.label3 = new global::Gtk.Label();
@@ -413,18 +424,76 @@ public partial class MainWindow
 		this.vbox6.Name = "vbox6";
 		this.vbox6.Spacing = 6;
 		// Container child vbox6.Gtk.Box+BoxChild
+		this.hbox13 = new global::Gtk.HBox();
+		this.hbox13.Name = "hbox13";
+		this.hbox13.Spacing = 6;
+		// Container child hbox13.Gtk.Box+BoxChild
+		this.label9 = new global::Gtk.Label();
+		this.label9.Name = "label9";
+		this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Collaboration KML by city");
+		this.hbox13.Add(this.label9);
+		global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.label9]));
+		w29.Position = 0;
+		w29.Expand = false;
+		w29.Fill = false;
+		// Container child hbox13.Gtk.Box+BoxChild
+		this.button12 = new global::Gtk.Button();
+		this.button12.CanFocus = true;
+		this.button12.Name = "button12";
+		this.button12.UseUnderline = true;
+		this.button12.Label = global::Mono.Unix.Catalog.GetString("To KML file");
+		this.hbox13.Add(this.button12);
+		global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox13[this.button12]));
+		w30.Position = 1;
+		w30.Expand = false;
+		w30.Fill = false;
+		this.vbox6.Add(this.hbox13);
+		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox13]));
+		w31.Position = 0;
+		w31.Expand = false;
+		w31.Fill = false;
+		// Container child vbox6.Gtk.Box+BoxChild
+		this.hbox14 = new global::Gtk.HBox();
+		this.hbox14.Name = "hbox14";
+		this.hbox14.Spacing = 6;
+		// Container child hbox14.Gtk.Box+BoxChild
+		this.label11 = new global::Gtk.Label();
+		this.label11.Name = "label11";
+		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString("Collaboration KML by country");
+		this.hbox14.Add(this.label11);
+		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.label11]));
+		w32.Position = 0;
+		w32.Expand = false;
+		w32.Fill = false;
+		// Container child hbox14.Gtk.Box+BoxChild
+		this.button13 = new global::Gtk.Button();
+		this.button13.CanFocus = true;
+		this.button13.Name = "button13";
+		this.button13.UseUnderline = true;
+		this.button13.Label = global::Mono.Unix.Catalog.GetString("To KML file");
+		this.hbox14.Add(this.button13);
+		global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox14[this.button13]));
+		w33.Position = 1;
+		w33.Expand = false;
+		w33.Fill = false;
+		this.vbox6.Add(this.hbox14);
+		global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox14]));
+		w34.Position = 1;
+		w34.Expand = false;
+		w34.Fill = false;
+		// Container child vbox6.Gtk.Box+BoxChild
 		this.hbox10 = new global::Gtk.HBox();
 		this.hbox10.Name = "hbox10";
 		this.hbox10.Spacing = 6;
 		// Container child hbox10.Gtk.Box+BoxChild
 		this.label8 = new global::Gtk.Label();
 		this.label8.Name = "label8";
-		this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Collaboration KML");
+		this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Collaboration KML by institution");
 		this.hbox10.Add(this.label8);
-		global::Gtk.Box.BoxChild w29 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.label8]));
-		w29.Position = 0;
-		w29.Expand = false;
-		w29.Fill = false;
+		global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.label8]));
+		w35.Position = 0;
+		w35.Expand = false;
+		w35.Fill = false;
 		// Container child hbox10.Gtk.Box+BoxChild
 		this.button4 = new global::Gtk.Button();
 		this.button4.CanFocus = true;
@@ -432,15 +501,15 @@ public partial class MainWindow
 		this.button4.UseUnderline = true;
 		this.button4.Label = global::Mono.Unix.Catalog.GetString("To KML file");
 		this.hbox10.Add(this.button4);
-		global::Gtk.Box.BoxChild w30 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.button4]));
-		w30.Position = 1;
-		w30.Expand = false;
-		w30.Fill = false;
+		global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox10[this.button4]));
+		w36.Position = 1;
+		w36.Expand = false;
+		w36.Fill = false;
 		this.vbox6.Add(this.hbox10);
-		global::Gtk.Box.BoxChild w31 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox10]));
-		w31.Position = 0;
-		w31.Expand = false;
-		w31.Fill = false;
+		global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox10]));
+		w37.Position = 2;
+		w37.Expand = false;
+		w37.Fill = false;
 		// Container child vbox6.Gtk.Box+BoxChild
 		this.hbox11 = new global::Gtk.HBox();
 		this.hbox11.Name = "hbox11";
@@ -450,10 +519,10 @@ public partial class MainWindow
 		this.label14.Name = "label14";
 		this.label14.LabelProp = global::Mono.Unix.Catalog.GetString("Publications in countries");
 		this.hbox11.Add(this.label14);
-		global::Gtk.Box.BoxChild w32 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.label14]));
-		w32.Position = 0;
-		w32.Expand = false;
-		w32.Fill = false;
+		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.label14]));
+		w38.Position = 0;
+		w38.Expand = false;
+		w38.Fill = false;
 		// Container child hbox11.Gtk.Box+BoxChild
 		this.button8 = new global::Gtk.Button();
 		this.button8.CanFocus = true;
@@ -461,10 +530,10 @@ public partial class MainWindow
 		this.button8.UseUnderline = true;
 		this.button8.Label = global::Mono.Unix.Catalog.GetString("To KML file");
 		this.hbox11.Add(this.button8);
-		global::Gtk.Box.BoxChild w33 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.button8]));
-		w33.Position = 1;
-		w33.Expand = false;
-		w33.Fill = false;
+		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.button8]));
+		w39.Position = 1;
+		w39.Expand = false;
+		w39.Fill = false;
 		// Container child hbox11.Gtk.Box+BoxChild
 		this.button9 = new global::Gtk.Button();
 		this.button9.CanFocus = true;
@@ -472,15 +541,15 @@ public partial class MainWindow
 		this.button9.UseUnderline = true;
 		this.button9.Label = global::Mono.Unix.Catalog.GetString("To CSV file");
 		this.hbox11.Add(this.button9);
-		global::Gtk.Box.BoxChild w34 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.button9]));
-		w34.Position = 2;
-		w34.Expand = false;
-		w34.Fill = false;
+		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox11[this.button9]));
+		w40.Position = 2;
+		w40.Expand = false;
+		w40.Fill = false;
 		this.vbox6.Add(this.hbox11);
-		global::Gtk.Box.BoxChild w35 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox11]));
-		w35.Position = 1;
-		w35.Expand = false;
-		w35.Fill = false;
+		global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox11]));
+		w41.Position = 3;
+		w41.Expand = false;
+		w41.Fill = false;
 		// Container child vbox6.Gtk.Box+BoxChild
 		this.hbox12 = new global::Gtk.HBox();
 		this.hbox12.Name = "hbox12";
@@ -490,10 +559,10 @@ public partial class MainWindow
 		this.label15.Name = "label15";
 		this.label15.LabelProp = global::Mono.Unix.Catalog.GetString("Journals in countries");
 		this.hbox12.Add(this.label15);
-		global::Gtk.Box.BoxChild w36 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.label15]));
-		w36.Position = 0;
-		w36.Expand = false;
-		w36.Fill = false;
+		global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.label15]));
+		w42.Position = 0;
+		w42.Expand = false;
+		w42.Fill = false;
 		// Container child hbox12.Gtk.Box+BoxChild
 		this.button10 = new global::Gtk.Button();
 		this.button10.CanFocus = true;
@@ -501,10 +570,10 @@ public partial class MainWindow
 		this.button10.UseUnderline = true;
 		this.button10.Label = global::Mono.Unix.Catalog.GetString("To KML file");
 		this.hbox12.Add(this.button10);
-		global::Gtk.Box.BoxChild w37 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.button10]));
-		w37.Position = 1;
-		w37.Expand = false;
-		w37.Fill = false;
+		global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.button10]));
+		w43.Position = 1;
+		w43.Expand = false;
+		w43.Fill = false;
 		// Container child hbox12.Gtk.Box+BoxChild
 		this.button11 = new global::Gtk.Button();
 		this.button11.CanFocus = true;
@@ -512,25 +581,25 @@ public partial class MainWindow
 		this.button11.UseUnderline = true;
 		this.button11.Label = global::Mono.Unix.Catalog.GetString("To CSV file");
 		this.hbox12.Add(this.button11);
-		global::Gtk.Box.BoxChild w38 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.button11]));
-		w38.Position = 2;
-		w38.Expand = false;
-		w38.Fill = false;
+		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox12[this.button11]));
+		w44.Position = 2;
+		w44.Expand = false;
+		w44.Fill = false;
 		this.vbox6.Add(this.hbox12);
-		global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox12]));
-		w39.Position = 2;
-		w39.Expand = false;
-		w39.Fill = false;
+		global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.hbox12]));
+		w45.Position = 4;
+		w45.Expand = false;
+		w45.Fill = false;
 		this.hbox4.Add(this.vbox6);
-		global::Gtk.Box.BoxChild w40 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.vbox6]));
-		w40.Position = 1;
-		w40.Expand = false;
-		w40.Fill = false;
+		global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.hbox4[this.vbox6]));
+		w46.Position = 1;
+		w46.Expand = false;
+		w46.Fill = false;
 		this.vbox4.Add(this.hbox4);
-		global::Gtk.Box.BoxChild w41 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox4]));
-		w41.Position = 0;
-		w41.Expand = false;
-		w41.Fill = false;
+		global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox4]));
+		w47.Position = 0;
+		w47.Expand = false;
+		w47.Fill = false;
 		// Container child vbox4.Gtk.Box+BoxChild
 		this.hbox5 = new global::Gtk.HBox();
 		this.hbox5.Name = "hbox5";
@@ -545,24 +614,24 @@ public partial class MainWindow
 		this.label17.LabelProp = global::Mono.Unix.Catalog.GetString("<b>B</b>");
 		this.label17.UseMarkup = true;
 		this.vbox8.Add(this.label17);
-		global::Gtk.Box.BoxChild w42 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.label17]));
-		w42.Position = 0;
-		w42.Expand = false;
-		w42.Fill = false;
+		global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.vbox8[this.label17]));
+		w48.Position = 0;
+		w48.Expand = false;
+		w48.Fill = false;
 		this.hbox5.Add(this.vbox8);
-		global::Gtk.Box.BoxChild w43 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.vbox8]));
-		w43.Position = 0;
-		w43.Expand = false;
-		w43.Fill = false;
+		global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.vbox8]));
+		w49.Position = 0;
+		w49.Expand = false;
+		w49.Fill = false;
 		// Container child hbox5.Gtk.Box+BoxChild
 		this.label10 = new global::Gtk.Label();
 		this.label10.Name = "label10";
 		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Geo coded locations CSV (Input B + newly geo coded using Input C)");
 		this.hbox5.Add(this.label10);
-		global::Gtk.Box.BoxChild w44 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label10]));
-		w44.Position = 1;
-		w44.Expand = false;
-		w44.Fill = false;
+		global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.label10]));
+		w50.Position = 1;
+		w50.Expand = false;
+		w50.Fill = false;
 		// Container child hbox5.Gtk.Box+BoxChild
 		this.button5 = new global::Gtk.Button();
 		this.button5.CanFocus = true;
@@ -570,15 +639,15 @@ public partial class MainWindow
 		this.button5.UseUnderline = true;
 		this.button5.Label = global::Mono.Unix.Catalog.GetString("To file");
 		this.hbox5.Add(this.button5);
-		global::Gtk.Box.BoxChild w45 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.button5]));
-		w45.Position = 2;
-		w45.Expand = false;
-		w45.Fill = false;
+		global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.hbox5[this.button5]));
+		w51.Position = 2;
+		w51.Expand = false;
+		w51.Fill = false;
 		this.vbox4.Add(this.hbox5);
-		global::Gtk.Box.BoxChild w46 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox5]));
-		w46.Position = 1;
-		w46.Expand = false;
-		w46.Fill = false;
+		global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox5]));
+		w52.Position = 1;
+		w52.Expand = false;
+		w52.Fill = false;
 		// Container child vbox4.Gtk.Box+BoxChild
 		this.hbox6 = new global::Gtk.HBox();
 		this.hbox6.Name = "hbox6";
@@ -593,15 +662,15 @@ public partial class MainWindow
 		this.label18.LabelProp = global::Mono.Unix.Catalog.GetString("<b>C</b>");
 		this.label18.UseMarkup = true;
 		this.vbox9.Add(this.label18);
-		global::Gtk.Box.BoxChild w47 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.label18]));
-		w47.Position = 0;
-		w47.Expand = false;
-		w47.Fill = false;
+		global::Gtk.Box.BoxChild w53 = ((global::Gtk.Box.BoxChild)(this.vbox9[this.label18]));
+		w53.Position = 0;
+		w53.Expand = false;
+		w53.Fill = false;
 		this.hbox6.Add(this.vbox9);
-		global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.vbox9]));
-		w48.Position = 0;
-		w48.Expand = false;
-		w48.Fill = false;
+		global::Gtk.Box.BoxChild w54 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.vbox9]));
+		w54.Position = 0;
+		w54.Expand = false;
+		w54.Fill = false;
 		// Container child hbox6.Gtk.Box+BoxChild
 		this.vbox5 = new global::Gtk.VBox();
 		this.vbox5.Name = "vbox5";
@@ -615,10 +684,10 @@ public partial class MainWindow
 		this.label13.Name = "label13";
 		this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("List of geo coded locations which failed to geo code successfully");
 		this.hbox8.Add(this.label13);
-		global::Gtk.Box.BoxChild w49 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.label13]));
-		w49.Position = 0;
-		w49.Expand = false;
-		w49.Fill = false;
+		global::Gtk.Box.BoxChild w55 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.label13]));
+		w55.Position = 0;
+		w55.Expand = false;
+		w55.Fill = false;
 		// Container child hbox8.Gtk.Box+BoxChild
 		this.button7 = new global::Gtk.Button();
 		this.button7.CanFocus = true;
@@ -626,15 +695,15 @@ public partial class MainWindow
 		this.button7.UseUnderline = true;
 		this.button7.Label = global::Mono.Unix.Catalog.GetString("To file");
 		this.hbox8.Add(this.button7);
-		global::Gtk.Box.BoxChild w50 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.button7]));
-		w50.Position = 1;
-		w50.Expand = false;
-		w50.Fill = false;
+		global::Gtk.Box.BoxChild w56 = ((global::Gtk.Box.BoxChild)(this.hbox8[this.button7]));
+		w56.Position = 1;
+		w56.Expand = false;
+		w56.Fill = false;
 		this.vbox5.Add(this.hbox8);
-		global::Gtk.Box.BoxChild w51 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox8]));
-		w51.Position = 0;
-		w51.Expand = false;
-		w51.Fill = false;
+		global::Gtk.Box.BoxChild w57 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox8]));
+		w57.Position = 0;
+		w57.Expand = false;
+		w57.Fill = false;
 		// Container child vbox5.Gtk.Box+BoxChild
 		this.hbox9 = new global::Gtk.HBox();
 		this.hbox9.Name = "hbox9";
@@ -644,10 +713,10 @@ public partial class MainWindow
 		this.label12.Name = "label12";
 		this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("List of locations not geo coded yet");
 		this.hbox9.Add(this.label12);
-		global::Gtk.Box.BoxChild w52 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.label12]));
-		w52.Position = 0;
-		w52.Expand = false;
-		w52.Fill = false;
+		global::Gtk.Box.BoxChild w58 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.label12]));
+		w58.Position = 0;
+		w58.Expand = false;
+		w58.Fill = false;
 		// Container child hbox9.Gtk.Box+BoxChild
 		this.button6 = new global::Gtk.Button();
 		this.button6.CanFocus = true;
@@ -655,25 +724,25 @@ public partial class MainWindow
 		this.button6.UseUnderline = true;
 		this.button6.Label = global::Mono.Unix.Catalog.GetString("To file");
 		this.hbox9.Add(this.button6);
-		global::Gtk.Box.BoxChild w53 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.button6]));
-		w53.Position = 1;
-		w53.Expand = false;
-		w53.Fill = false;
+		global::Gtk.Box.BoxChild w59 = ((global::Gtk.Box.BoxChild)(this.hbox9[this.button6]));
+		w59.Position = 1;
+		w59.Expand = false;
+		w59.Fill = false;
 		this.vbox5.Add(this.hbox9);
-		global::Gtk.Box.BoxChild w54 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox9]));
-		w54.Position = 1;
-		w54.Expand = false;
-		w54.Fill = false;
+		global::Gtk.Box.BoxChild w60 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.hbox9]));
+		w60.Position = 1;
+		w60.Expand = false;
+		w60.Fill = false;
 		this.hbox6.Add(this.vbox5);
-		global::Gtk.Box.BoxChild w55 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.vbox5]));
-		w55.Position = 1;
-		w55.Expand = false;
-		w55.Fill = false;
+		global::Gtk.Box.BoxChild w61 = ((global::Gtk.Box.BoxChild)(this.hbox6[this.vbox5]));
+		w61.Position = 1;
+		w61.Expand = false;
+		w61.Fill = false;
 		this.vbox4.Add(this.hbox6);
-		global::Gtk.Box.BoxChild w56 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox6]));
-		w56.Position = 2;
-		w56.Expand = false;
-		w56.Fill = false;
+		global::Gtk.Box.BoxChild w62 = ((global::Gtk.Box.BoxChild)(this.vbox4[this.hbox6]));
+		w62.Position = 2;
+		w62.Expand = false;
+		w62.Fill = false;
 		this.GtkAlignment2.Add(this.vbox4);
 		this.frame_output.Add(this.GtkAlignment2);
 		this.GtkLabel15 = new global::Gtk.Label();
@@ -682,10 +751,10 @@ public partial class MainWindow
 		this.GtkLabel15.UseMarkup = true;
 		this.frame_output.LabelWidget = this.GtkLabel15;
 		this.vbox1.Add(this.frame_output);
-		global::Gtk.Box.BoxChild w59 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.frame_output]));
-		w59.Position = 2;
-		w59.Expand = false;
-		w59.Fill = false;
+		global::Gtk.Box.BoxChild w65 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.frame_output]));
+		w65.Position = 2;
+		w65.Expand = false;
+		w65.Fill = false;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{
@@ -699,7 +768,9 @@ public partial class MainWindow
 		this.inputKnownLocationsSelect.Clicked += new global::System.EventHandler(this.OnInputKnownLocationsSelect);
 		this.buttonStart.Clicked += new global::System.EventHandler(this.OnButtonStart);
 		this.buttonStop.Clicked += new global::System.EventHandler(this.OnButtonStop);
-		this.button4.Clicked += new global::System.EventHandler(this.OnOutputCollaborationKml);
+		this.button12.Clicked += new global::System.EventHandler(this.OnOutputCollaborationsByCityKml);
+		this.button13.Clicked += new global::System.EventHandler(this.OnOutputCollaborationsByCountryKml);
+		this.button4.Clicked += new global::System.EventHandler(this.OnOutputCollaborationsByInstitutionKml);
 		this.button8.Clicked += new global::System.EventHandler(this.OnOutputPublicationsKml);
 		this.button9.Clicked += new global::System.EventHandler(this.OnOutputPublicationsCsv);
 		this.button10.Clicked += new global::System.EventHandler(this.OnOutputJournalsKml);

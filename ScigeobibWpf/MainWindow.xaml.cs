@@ -125,7 +125,7 @@ namespace ScigeobibWpf
 
         private void OutputCollaborationKmlSelect_Click(object sender, RoutedEventArgs e)
         {
-            SelectOutputFile(main.GetOutput_CollaborationKml, "KML Files|*.kml");
+            SelectOutputFile(main.GetOutput_CollaborationsByCityKml, "KML Files|*.kml");
         }
 
         private void OutputJournalsKmlSelect_Click(object sender, RoutedEventArgs e)

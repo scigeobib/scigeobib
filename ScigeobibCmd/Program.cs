@@ -27,8 +27,14 @@ namespace ScigeobibCmd
 		[Option("verbose", HelpText = "Prints all messages to standard output.")]
 		public bool Verbose { get; set; }
 
-		[Option("output_collaborations_kml", Required = false, HelpText = "Collaborations KML.")]
-		public string Output_Collaborations_Kml { get; set; }
+		[Option("output_collaborations_city_kml", Required = false, HelpText = "Collaborations KML (by city).")]
+		public string Output_Collaborations_City_Kml { get; set; }
+
+		[Option("output_collaborations_country_kml", Required = false, HelpText = "Collaborations KML (by country).")]
+		public string Output_Collaborations_Country_Kml { get; set; }
+
+		[Option("output_collaborations_institution_kml", Required = false, HelpText = "Collaborations KML (by institution).")]
+		public string Output_Collaborations_Institution_Kml { get; set; }
 
 		[Option("output_publications_kml", Required = false, HelpText = "Publications in countries - KML.")]
 		public string Output_Publications_Kml { get; set; }
@@ -95,8 +101,14 @@ namespace ScigeobibCmd
 			main.SetInput_RetryGeoCoding(options.RetryGeoCoding);
 			main.DoWork();
 
-			if (options.Output_Collaborations_Kml != null)
-				main.GetOutput_CollaborationKml(options.Output_Collaborations_Kml);
+			if (options.Output_Collaborations_City_Kml != null)
+				main.GetOutput_CollaborationsByCityKml(options.Output_Collaborations_City_Kml);
+
+			if (options.Output_Collaborations_Country_Kml != null)
+				main.GetOutput_CollaborationsByCountryKml(options.Output_Collaborations_Country_Kml);
+
+			if (options.Output_Collaborations_Institution_Kml != null)
+				main.GetOutput_CollaborationsByInstitutionKml(options.Output_Collaborations_Institution_Kml);
 
 			if (options.Output_Publications_Kml != null)
 				main.GetOutput_PublicationsKml(options.Output_Publications_Kml);

@@ -21,7 +21,7 @@ namespace Scigeobib
 			CollectionUtils.AddToSet(countryToJournals, country, journal);
 		}
 
-		public void WriteKml(IDictionary<GeoCodedLocation, int> dict, string filePath)
+		public static void WriteKml(IDictionary<GeoCodedLocation, int> dict, string filePath)
 		{
 			int maxValue = dict.Count > 0 ? dict.Max(kv => kv.Value) : 1;
 			using (KmlWriter kmlWriter = new KmlWriter(filePath))
@@ -33,7 +33,7 @@ namespace Scigeobib
 			}
 		}
 
-		public void WriteCsv(IDictionary<GeoCodedLocation, int> dict, string filePath)
+		public static void WriteCsv(IDictionary<GeoCodedLocation, int> dict, string filePath)
 		{
 			using (TextWriter tw = new StreamWriter(filePath, false, Encoding.UTF8))
 			{

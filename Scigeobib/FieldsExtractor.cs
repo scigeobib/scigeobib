@@ -35,6 +35,21 @@ namespace Scigeobib
 
 		public List<string> GetCities(Publication publication)
 		{
+			return GetLocationsFromAddresses(publication, ParseCity, "cities");
+		}
+
+		public List<string> GetCountries(Publication publication)
+		{
+			return GetLocationsFromAddresses(publication, ParseCountry, "countries");
+		}
+
+		public List<string> GetInstitutions(Publication publication)
+		{
+			return GetLocationsFromAddresses(publication, ParseInstitution, "institutions");
+		}
+
+		private List<string> GetLocationsFromAddresses(Publication publication, Func<string, string> parseFunc, string nameForLog)
+		{
 			string field = null;
 			if (fileType == FileType.WOS) field = "C1";
 			else if (fileType == FileType.SCOPUS) field = "Affiliations";
@@ -47,28 +62,28 @@ namespace Scigeobib
 				PublicationEntry entry = publication.entries[field];
 				if (entry.values.Count == 0)
 				{
-					logger.Debug("No values for cities extraction");
+					logger.Debug("No values for {0} extraction", nameForLog);
 				}
 
 				foreach (string address in entry.values)
 				{
-					string city = ParseCity(address);
+					string location = parseFunc(address);
 
-					if (city != null)
-						result.Add(city);
+					if (location != null)
+						result.Add(location);
 					else
-						logger.Warn("No cities extracted from address: \"{0}\" (in publication \"{1}\")", address, GetTitle(publication));
+						logger.Warn("No {0} extracted from address: \"{1}\" (in publication \"{2}\")", nameForLog, address, GetTitle(publication));
 				}
 			}
 			else
 			{
-				logger.Debug("No field for cities extraction");
+				logger.Debug("No field for {0} extraction", nameForLog);
 			}
 
 			if (result.Count > 0)
-				logger.Info("Extracted cities: \"{0}\" (publication: \"{1}\")", string.Join(", ", result), GetTitle(publication));
+				logger.Info("Extracted {0}: \"{1}\" (publication: \"{2}\")", nameForLog, string.Join(", ", result), GetTitle(publication));
 			else
-				logger.Warn("No cities extracted from publication: \"{0}\"", GetTitle(publication));
+				logger.Warn("No {0} extracted from publication: \"{1}\"", nameForLog, GetTitle(publication));
 
 			return result;
 		}
@@ -192,6 +207,11 @@ namespace Scigeobib
 			}
 
 			return null;
+		}
+
+		private static string ParseInstitution(string address)
+		{
+			return address;
 		}
 
 		private static string RemoveWordsWithNumbers(string orig)

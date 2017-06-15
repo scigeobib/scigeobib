@@ -150,9 +150,19 @@ public partial class MainWindow : Gtk.Window
 		buttonStop.Sensitive = running;
 	}
 
-	protected void OnOutputCollaborationKml(object sender, EventArgs e)
+	protected void OnOutputCollaborationsByCityKml(object sender, EventArgs e)
 	{
-		SelectOutputFile(main.GetOutput_CollaborationKml, "*.kml");
+		SelectOutputFile(main.GetOutput_CollaborationsByCityKml, "*.kml");
+	}
+
+	protected void OnOutputCollaborationsByCountryKml(object sender, EventArgs e)
+	{
+		SelectOutputFile(main.GetOutput_CollaborationsByCountryKml, "*.kml");
+	}
+
+	protected void OnOutputCollaborationsByInstitutionKml(object sender, EventArgs e)
+	{
+		SelectOutputFile(main.GetOutput_CollaborationsByInstitutionKml, "*.kml");
 	}
 
 	protected void OnOutputPublicationsKml(object sender, EventArgs e)

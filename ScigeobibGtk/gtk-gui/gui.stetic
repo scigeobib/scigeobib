@@ -390,13 +390,93 @@
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
                             <child>
+                              <widget class="Gtk.HBox" id="hbox13">
+                                <property name="MemberName" />
+                                <property name="Spacing">6</property>
+                                <child>
+                                  <widget class="Gtk.Label" id="label9">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Collaboration KML by city</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Button" id="button12">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="Type">TextOnly</property>
+                                    <property name="Label" translatable="yes">To KML file</property>
+                                    <property name="UseUnderline">True</property>
+                                    <signal name="Clicked" handler="OnOutputCollaborationsByCityKml" />
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">1</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.HBox" id="hbox14">
+                                <property name="MemberName" />
+                                <property name="Spacing">6</property>
+                                <child>
+                                  <widget class="Gtk.Label" id="label11">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Collaboration KML by country</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Button" id="button13">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="Type">TextOnly</property>
+                                    <property name="Label" translatable="yes">To KML file</property>
+                                    <property name="UseUnderline">True</property>
+                                    <signal name="Clicked" handler="OnOutputCollaborationsByCountryKml" />
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">1</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
                               <widget class="Gtk.HBox" id="hbox10">
                                 <property name="MemberName" />
                                 <property name="Spacing">6</property>
                                 <child>
                                   <widget class="Gtk.Label" id="label8">
                                     <property name="MemberName" />
-                                    <property name="LabelProp" translatable="yes">Collaboration KML</property>
+                                    <property name="LabelProp" translatable="yes">Collaboration KML by institution</property>
                                   </widget>
                                   <packing>
                                     <property name="Position">0</property>
@@ -412,7 +492,7 @@
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes">To KML file</property>
                                     <property name="UseUnderline">True</property>
-                                    <signal name="Clicked" handler="OnOutputCollaborationKml" />
+                                    <signal name="Clicked" handler="OnOutputCollaborationsByInstitutionKml" />
                                   </widget>
                                   <packing>
                                     <property name="Position">1</property>
@@ -423,7 +503,7 @@
                                 </child>
                               </widget>
                               <packing>
-                                <property name="Position">0</property>
+                                <property name="Position">2</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -479,7 +559,7 @@
                                 </child>
                               </widget>
                               <packing>
-                                <property name="Position">1</property>
+                                <property name="Position">3</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
@@ -535,7 +615,7 @@
                                 </child>
                               </widget>
                               <packing>
-                                <property name="Position">2</property>
+                                <property name="Position">4</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>

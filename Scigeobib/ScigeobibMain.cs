@@ -11,7 +11,9 @@ namespace Scigeobib
 
 		private PublicationsFile publicationsFile;
 		private GeoCodingWithState geoCoding = new GeoCodingWithState();
-		private CityMatrix matrix;
+		private CollaborationMatrix collaborations_byCity;
+		private CollaborationMatrix collaborations_byCountry;
+		private CollaborationMatrix collaborations_byInstitution;
 		private Statistics statistics;
 
 		public void SetInput_Publications_WOS(string filePath)
@@ -83,23 +85,17 @@ namespace Scigeobib
 		{
 			try
 			{
-				matrix = new CityMatrix();
+				collaborations_byCity = new CollaborationMatrix();
+				collaborations_byCountry = new CollaborationMatrix();
+				collaborations_byInstitution = new CollaborationMatrix();
 
 				FieldsExtractor extractor = new FieldsExtractor(publicationsFile.Type);
 
 				foreach (Publication publication in publicationsFile.publications)
 				{
-					var publicationCities = extractor.GetCities(publication);
-
-					List<GeoCodedLocation> publicationCitiesResolved = publicationCities.Select(x => geoCoding.GeoCode_OrNull(x)).Where(x => x != null).Distinct().ToList();
-
-					for (int i = 0; i < publicationCitiesResolved.Count; ++i)
-					{
-						for (int j = i + 1; j < publicationCitiesResolved.Count; ++j)
-						{
-							matrix.AddConnection(publicationCitiesResolved[i], publicationCitiesResolved[j]);
-						}
-					}
+					AddCollaborations(collaborations_byCity, extractor.GetCities(publication));
+					AddCollaborations(collaborations_byCountry, extractor.GetCountries(publication));
+					AddCollaborations(collaborations_byInstitution, extractor.GetInstitutions(publication));
 				}
 
 				statistics = new Statistics();
@@ -134,27 +130,40 @@ namespace Scigeobib
 			}
 		}
 
-		public void GetOutput_CollaborationKml(string filePath)
+		public void GetOutput_CollaborationsByCityKml(string filePath)
 		{
 			try
 			{
-				using (KmlWriter kmlWriter = new KmlWriter(filePath))
-				{
-					foreach (var city in matrix.GetCities())
-					{
-						kmlWriter.WriteCity(city.Key, 1 + (double)city.Value * 2 / matrix.GetMaxCityValue(), city.Value);
-					}
-
-					foreach (var connection in matrix.GetConnections())
-					{
-						double width = 1 + (double)connection.Value * 4 / matrix.GetMaxConnectionValue();
-						kmlWriter.WriteLine(connection.Key.Item1, connection.Key.Item2, width, connection.Value);
-					}
-				}
+				collaborations_byCity.WriteKml(filePath);
 			}
 			catch (Exception e)
 			{
-				logger.Error(e, "Error while creating collaboration KML.");
+				logger.Error(e, "Error while creating collaboration KML (by city).");
+				throw;
+			}
+		}
+
+		public void GetOutput_CollaborationsByCountryKml(string filePath)
+		{
+			try
+			{
+				collaborations_byCountry.WriteKml(filePath);
+			}
+			catch (Exception e)
+			{
+				logger.Error(e, "Error while creating collaboration KML (by country).");
+				throw;
+			}
+		}
+		public void GetOutput_CollaborationsByInstitutionKml(string filePath)
+		{
+			try
+			{
+				collaborations_byInstitution.WriteKml(filePath);
+			}
+			catch (Exception e)
+			{
+				logger.Error(e, "Error while creating collaboration KML (by institution).");
 				throw;
 			}
 		}
@@ -163,7 +172,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				statistics.WriteKml(statistics.countryToPublicationsCount, filePath);
+				Statistics.WriteKml(statistics.countryToPublicationsCount, filePath);
 			}
 			catch (Exception e)
 			{
@@ -176,7 +185,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				statistics.WriteCsv(statistics.countryToPublicationsCount, filePath);
+				Statistics.WriteCsv(statistics.countryToPublicationsCount, filePath);
 			}
 			catch (Exception e)
 			{
@@ -189,7 +198,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				statistics.WriteKml(CollectionUtils.SetDictToCountDict(statistics.countryToJournals), filePath);
+				Statistics.WriteKml(CollectionUtils.SetDictToCountDict(statistics.countryToJournals), filePath);
 			}
 			catch (Exception e)
 			{
@@ -202,7 +211,7 @@ namespace Scigeobib
 		{
 			try
 			{
-				statistics.WriteCsv(CollectionUtils.SetDictToCountDict(statistics.countryToJournals), filePath);
+				Statistics.WriteCsv(CollectionUtils.SetDictToCountDict(statistics.countryToJournals), filePath);
 			}
 			catch (Exception e)
 			{
@@ -247,6 +256,19 @@ namespace Scigeobib
 			{
 				logger.Error(e, "Error while saving unknown locations.");
 				throw;
+			}
+		}
+
+		private void AddCollaborations(CollaborationMatrix addTo, List<string> extractedLocations)
+		{
+			List<GeoCodedLocation> publicationCitiesResolved = extractedLocations.Select(x => geoCoding.GeoCode_OrNull(x)).Where(x => x != null).Distinct().ToList();
+
+			for (int i = 0; i < publicationCitiesResolved.Count; ++i)
+			{
+				for (int j = i + 1; j < publicationCitiesResolved.Count; ++j)
+				{
+					addTo.AddConnection(publicationCitiesResolved[i], publicationCitiesResolved[j]);
+				}
 			}
 		}
 	}
