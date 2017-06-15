@@ -39,10 +39,7 @@ namespace Scigeobib
 			{
 				var result = response.ResourceSets[0].Resources[0] as BingMapsRESTToolkit.Location;
 
-				GeoCodedLocation geoCity = new GeoCodedLocation();
-				geoCity.lat = result.Point.Coordinates[0];
-				geoCity.lon = result.Point.Coordinates[1];
-				geoCity.normalizedName = result.Address.FormattedAddress;
+				GeoCodedLocation geoCity = new GeoCodedLocation(result.Point.Coordinates[0], result.Point.Coordinates[1], result.Address.FormattedAddress);
 
 				return geoCity;
 			}

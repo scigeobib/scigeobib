@@ -33,29 +33,35 @@ namespace Scigeobib
 			return result;
 		}
 
-		public List<string> GetCities(Publication publication)
+		public struct ParsedLocation
 		{
-			return GetLocationsFromAddresses(publication, ParseCity, "cities");
+			public string NameForGeocoding { get; set; }
+			public string AdditionalNamePrefix { get; set; }
 		}
 
-		public List<string> GetCountries(Publication publication)
+		public List<ParsedLocation> GetCities(Publication publication)
 		{
-			return GetLocationsFromAddresses(publication, ParseCountry, "countries");
+			return GetLocationsFromAddresses(publication, ParseCity, x => "", "cities");
 		}
 
-		public List<string> GetInstitutions(Publication publication)
+		public List<ParsedLocation> GetCountries(Publication publication)
 		{
-			return GetLocationsFromAddresses(publication, ParseInstitution, "institutions");
+			return GetLocationsFromAddresses(publication, ParseCountry, x => "", "countries");
 		}
 
-		private List<string> GetLocationsFromAddresses(Publication publication, Func<string, string> parseFunc, string nameForLog)
+		public List<ParsedLocation> GetInstitutions(Publication publication)
+		{
+			return GetLocationsFromAddresses(publication, ParseCity, ParseInstitution, "institutions");
+		}
+
+		private List<ParsedLocation> GetLocationsFromAddresses(Publication publication, Func<string, string> parseNameForGeocodingFunc, Func<string, string> parseAdditionalNamePrefixFunc, string nameForLog)
 		{
 			string field = null;
 			if (fileType == FileType.WOS) field = "C1";
 			else if (fileType == FileType.SCOPUS) field = "Affiliations";
 			else throw new Exception("Unhandled file type: " + fileType);
 
-			List<string> result = new List<string>();
+			List<ParsedLocation> result = new List<ParsedLocation>();
 
 			if (publication.entries.ContainsKey(field))
 			{
@@ -67,12 +73,21 @@ namespace Scigeobib
 
 				foreach (string address in entry.values)
 				{
-					string location = parseFunc(address);
+					string nameForGeocoding = parseNameForGeocodingFunc(address);
 
-					if (location != null)
-						result.Add(location);
-					else
+					if (nameForGeocoding == null)
 						logger.Warn("No {0} extracted from address: \"{1}\" (in publication \"{2}\")", nameForLog, address, GetTitle(publication));
+
+					string additionalNamePrefix = parseAdditionalNamePrefixFunc(address);
+					if (additionalNamePrefix == null)
+						logger.Warn("No {0} (additional name prefix) extracted from address: \"{1}\" (in publication \"{2}\")", nameForLog, address, GetTitle(publication));
+
+					if (nameForGeocoding != null && additionalNamePrefix != null)
+					{
+						if (additionalNamePrefix != "")
+							additionalNamePrefix = additionalNamePrefix.ToUpperInvariant() + ", ";
+						result.Add(new ParsedLocation() { NameForGeocoding = nameForGeocoding, AdditionalNamePrefix = additionalNamePrefix });
+					}
 				}
 			}
 			else
@@ -201,8 +216,6 @@ namespace Scigeobib
 			{
 				string lastPart = RemoveWordsWithNumbers(parts[parts.Length - 1].Trim());
 
-
-
 				return lastPart;
 			}
 
@@ -211,7 +224,13 @@ namespace Scigeobib
 
 		private static string ParseInstitution(string address)
 		{
-			return address;
+			int nameEnd = address.IndexOf(']');
+			if (nameEnd != -1)
+			{
+				address = address.Substring(nameEnd + 1).Trim();
+			}
+			string[] parts = address.Split(',');
+			return parts[0];
 		}
 
 		private static string RemoveWordsWithNumbers(string orig)

@@ -259,9 +259,19 @@ namespace Scigeobib
 			}
 		}
 
-		private void AddCollaborations(CollaborationMatrix addTo, List<string> extractedLocations)
+		private void AddCollaborations(CollaborationMatrix addTo, List<FieldsExtractor.ParsedLocation> extractedLocations)
 		{
-			List<GeoCodedLocation> publicationCitiesResolved = extractedLocations.Select(x => geoCoding.GeoCode_OrNull(x)).Where(x => x != null).Distinct().ToList();
+			List<GeoCodedLocation> publicationCitiesResolved = extractedLocations.Select(
+				x =>
+				{
+					GeoCodedLocation loc = geoCoding.GeoCode_OrNull(x.NameForGeocoding);
+					if (loc != null)
+					{
+						loc = new GeoCodedLocation(loc.lat, loc.lon, x.AdditionalNamePrefix + loc.normalizedName);
+					}
+					return loc;
+				}
+			).Where(x => x != null).Distinct().ToList();
 
 			for (int i = 0; i < publicationCitiesResolved.Count; ++i)
 			{

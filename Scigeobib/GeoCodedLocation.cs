@@ -4,9 +4,16 @@ namespace Scigeobib
 {
 	public class GeoCodedLocation : IComparable<GeoCodedLocation>, IComparable
 	{
-		public double lat;
-		public double lon;
-		public string normalizedName;
+		public double lat { get; private set; }
+		public double lon { get; private set; }
+		public string normalizedName { get; private set; }
+
+		public GeoCodedLocation(double lat, double lon, string normalizedName)
+		{
+			this.lat = lat;
+			this.lon = lon;
+			this.normalizedName = normalizedName;
+		}
 
 		public int CompareTo(object obj)
 		{

@@ -30,10 +30,7 @@ namespace Scigeobib
 
 					if (row[0] != "")
 					{
-						city = new GeoCodedLocation();
-						city.lat = double.Parse(row[0]);
-						city.lon = double.Parse(row[1]);
-						city.normalizedName = row[3];
+						city = new GeoCodedLocation(double.Parse(row[0]), double.Parse(row[1]), row[3]);
 					}
 
 					result.Add(ourName, city);
