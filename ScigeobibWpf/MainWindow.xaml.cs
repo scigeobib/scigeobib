@@ -123,9 +123,19 @@ namespace ScigeobibWpf
             SelectInputFile(InputPublications, "All Supported Files (*.txt;*.csv)|*.txt;*.csv|TXT Files (*.txt)|*.txt|CSV Files (*.csv)|*.csv|All Files|*.*");
         }
 
-        private void OutputCollaborationKmlSelect_Click(object sender, RoutedEventArgs e)
+        private void OutputCollaborationsByCityKmlSelect_Click(object sender, RoutedEventArgs e)
         {
             SelectOutputFile(main.GetOutput_CollaborationsByCityKml, "KML Files|*.kml");
+        }
+
+        private void OutputCollaborationsByCountryKmlSelect_Click(object sender, RoutedEventArgs e)
+        {
+            SelectOutputFile(main.GetOutput_CollaborationsByCountryKml, "KML Files|*.kml");
+        }
+
+        private void OutputCollaborationsByInstitutionKmlSelect_Click(object sender, RoutedEventArgs e)
+        {
+            SelectOutputFile(main.GetOutput_CollaborationsByInstitutionKml, "KML Files|*.kml");
         }
 
         private void OutputJournalsKmlSelect_Click(object sender, RoutedEventArgs e)

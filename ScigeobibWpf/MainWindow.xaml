@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScigeobibWpf"
         mc:Ignorable="d"
-        Title="SciGeoBib" Height="480" Width="640">
+        Title="SciGeoBib" Height="721.379" Width="640">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*" />
@@ -77,18 +77,26 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Label Content="Collaboration" Grid.Row="0" Grid.Column="0" Margin="15,0,5,5" FontSize="14" />
-            <Button Padding="5,5,5,5" x:Name="OutputCollaborationKmlSelect" Content="Save KML" Grid.Row="0" Grid.Column="1" Click="OutputCollaborationKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
+            <Label Content="Collaboration by Country" Grid.Column="0" Margin="17,0,3,5" FontSize="14" Grid.Row="0" />
+            <Button Padding="5,5,5,5" x:Name="OutputCollaborationsByCountryKmlSelect" Content="Save KML" Grid.Row="0" Grid.Column="1" Click="OutputCollaborationsByCountryKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
 
-            <Label Content="Journals in Countries" Grid.Row="1" Grid.Column="0" Margin="13,0,10,0" FontSize="14" />
-            <Button Padding="5,5,5,5" x:Name="OutputJournalsKmlSelect" Content="Save KML" Grid.Row="1" Grid.Column="1" Click="OutputJournalsKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
-            <Button Padding="5,5,5,5" x:Name="OutputJournalsCsvSelect" Content="Save CSV" Grid.Row="1" Grid.Column="2" Click="OutputJournalsCsvSelect_Click" Margin="5,5,15,5" FontSize="14" />
+            <Label Content="Collaboration by City" Grid.Row="1" Grid.Column="0" Margin="17,0,3,5" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputCollaborationsByCityKmlSelect" Content="Save KML" Grid.Row="1" Grid.Column="1" Click="OutputCollaborationsByCityKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
 
-            <Label Content="Publications in Countries" Grid.Row="2" Grid.Column="0" Margin="15,0,0,10" FontSize="14" />
-            <Button Padding="5,5,5,5" x:Name="OutputPublicationsKmlSelect" Content="Save KML" Grid.Row="2" Grid.Column="1" Click="OutputPublicationsKmlSelect_Click" Margin="0,5,5,10" FontSize="14" />
-            <Button Padding="5,5,5,5" x:Name="OutputPublicationsCsvSelect" Content="Save CSV" Grid.Row="2" Grid.Column="2" Click="OutputPublicationsCsvSelect_Click" Margin="5,5,15,10" FontSize="14" />
+            <Label Content="Collaboration by Institution" Grid.Row="2" Grid.Column="0" Margin="17,0,3,5" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputCollaborationsByInstitutionKmlSelect" Content="Save KML" Grid.Row="2" Grid.Column="1" Click="OutputCollaborationsByInstitutionKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
+
+            <Label Content="Journals in Countries" Grid.Row="3" Grid.Column="0" Margin="13,0,10,0" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputJournalsKmlSelect" Content="Save KML" Grid.Row="3" Grid.Column="1" Click="OutputJournalsKmlSelect_Click" Margin="0,5,5,5" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputJournalsCsvSelect" Content="Save CSV" Grid.Row="3" Grid.Column="2" Click="OutputJournalsCsvSelect_Click" Margin="5,5,15,5" FontSize="14" />
+
+            <Label Content="Publications in Countries" Grid.Row="4" Grid.Column="0" Margin="15,0,0,10" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputPublicationsKmlSelect" Content="Save KML" Grid.Row="4" Grid.Column="1" Click="OutputPublicationsKmlSelect_Click" Margin="0,5,5,10" FontSize="14" />
+            <Button Padding="5,5,5,5" x:Name="OutputPublicationsCsvSelect" Content="Save CSV" Grid.Row="4" Grid.Column="2" Click="OutputPublicationsCsvSelect_Click" Margin="5,5,15,10" FontSize="14" />
         </Grid>
     </Grid>
 </Window>
