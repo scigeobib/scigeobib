@@ -15,6 +15,12 @@ Usage
   - My account -> My Keys
   - Create a new key
 
+* **running under mono (Linux)**
+  - e.g. mono ScigeobibCmd.exe
+
+* **command line**
+  - ScigeobibCmd.exe --help
+
 Used libraries
 --------------
 
@@ -41,8 +47,4 @@ License
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
-
-TODO
-----
-
 
