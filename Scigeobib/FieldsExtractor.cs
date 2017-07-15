@@ -37,6 +37,11 @@ namespace Scigeobib
 		{
 			public string NameForGeocoding { get; set; }
 			public string AdditionalNamePrefix { get; set; }
+
+			public override string ToString()
+			{
+				return '[' + NameForGeocoding + ']';
+			}
 		}
 
 		public List<ParsedLocation> GetCities(Publication publication)
